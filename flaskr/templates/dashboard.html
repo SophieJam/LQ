@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>ようこそ、{{ username }}さん</h1>
+<h2>あなたの履歴:</h2>
+<ul>
+    {% for activity in history %}
+    <li>{{ activity }}</li>
+    {% endfor %}
+</ul>
+
+<br>
+<a href="{{ url_for('consult') }}" onclick="showLoader()">考えを吐き出してみよう</a>
+<br>
+<a href="{{ url_for('home') }}" onclick="showLoader()">別の名言</a>
+<br>
+<a href="{{ url_for('customize') }}" onclick="showLoader()">名言をカスタマイズしてみる</a>
+<br>
+<a href="{{ url_for('promote_to_admin') }}" onclick="showLoader()">管理者権限の付与</a>
+<br><br>
+<a href="{{ url_for('index') }}" onclick="showLoader()">ログアウト</a>
+{% endblock %}

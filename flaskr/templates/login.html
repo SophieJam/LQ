@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>ログイン</h1>
+<div id="loader" class="loader"></div>
+<form id="loginForm" action="{{ url_for('login') }}" method="POST" onsubmit="showLoader()">
+    {{ form.hidden_tag() }}
+    <label for="username">ユーザー名：</label>
+    {{ form.username }}
+    <br>
+    <label for="password">パスワード：</label>
+    {{ form.password }}
+    <br>
+    <label for="app_key">アプリケーションキー：</label>
+    {{ form.app_key }}
+    <br>
+    {{ form.submit }}
+</form>
+
+<br>
+<a href="{{ url_for('register') }}" onclick="showLoader()">ユーザー登録</a>
+
+<!-- 
+<div id="loading-message">こんにちは、{{ session['username'] }}さん！</div> 
+Redisをキャッシュとして機能させられたら完成させる。
+ -->
+
+<script>
+function showLoader() {
+    document.getElementById("loader").style.display = "block";
+    document.getElementById("loading-message").style.display = "block";
+}
+</script>
+{% endblock %}
+

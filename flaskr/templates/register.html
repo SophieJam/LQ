@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>ユーザー登録</h1>
+<div id="loader" class="loader"></div>
+<form id="registerForm" action="{{ url_for('register') }}" method="POST" onsubmit="showLoader()">
+    {{ form.hidden_tag() }}
+    <label for="username">ユーザー名：</label>
+    {{ form.username }}
+    <br>
+    <label for="password">パスワード：</label>
+    {{ form.password }}
+    <br>
+    {{ form.submit }}
+</form>
+
+<br>
+<a href="{{ url_for('login') }}" onclick="showLoader()">ログイン</a>
+
+<script>
+function showLoader() {
+    document.getElementById("loader").style.display = "block";
+}
+</script>
+{% endblock %}

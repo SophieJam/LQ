@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h4>今日の名言</h4>
+{% if quotes.quote != 'N/A' %}
+    <h1>「{{ quotes.quote }}」</h1>
+{% endif %}
+{% if quotes.source != 'N/A' %}
+    <p><span class="heading-style">出展:</span>{{ quotes.source }}</p>
+{% endif %}
+{% if quotes.author_name != 'N/A' %}
+    <p><span class="heading-style">人物:</span>{{ quotes.author_name }}</p>
+{% endif %}
+{% if quotes.birthdate != 'N/A' %}
+    <p>{{ quotes.birthdate }}</p>
+{% endif %}
+{% if quotes.author_memo != 'N/A' %}
+    <p><span class="heading-style">人物詳細:</span>{{ quotes.author_memo }}</p>
+{% endif %}
+{% if quotes.supplement_info != 'N/A' %}
+    <h3><span class="heading-style">詳細:</span>{{ quotes.supplement_info }}</h3>
+{% endif %}
+
+<div class="image-container">
+    {% if image_url %}
+        <img src="{{ image_url }}" alt="Generated Image" class="generated-image">
+    {% endif %}
+</div>
+
+<a href="{{ url_for('consult') }}" onclick="showLoader()">考えを吐き出してみよう</a>
+<br>
+<a href="{{ url_for('customize') }}" onclick="showLoader()">名言をカスタマイズしてみる</a>
+<br>
+<a href="{{ url_for('home') }}" onclick="showLoader()">別の名言</a>
+<br>
+<a href="{{ url_for('dashboard') }}" onclick="showLoader()">Dashboard</a>
+<br>
+<a href="{{ url_for('promote_to_admin') }}" onclick="showLoader()">管理者権限の付与</a>
+<br><br>
+<a href="{{ url_for('index') }}" onclick="showLoader()">ログアウト</a>
+
+<div id="loader" class="loader"></div>
+
+<script>
+function showLoader() {
+    document.getElementById("loader").style.display = "block";
+}
+</script>
+{% endblock %}
