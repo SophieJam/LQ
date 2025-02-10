@@ -33,19 +33,18 @@ app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=1)
 csrf = CSRFProtect(app)
 
 allowed_referers = [
-    "http://127.0.0.1:5000/register",
-    "http://127.0.0.1:5000/login",
-    "http://127.0.0.1:5000/logout",
-    "http://127.0.0.1:5000/home",
-    "http://127.0.0.1:5000/consult",
-    "http://127.0.0.1:5000/submit",
-    "http://127.0.0.1:5000/customize",
-    "http://127.0.0.1:5000/dashboard",
-    "http://127.0.0.1:5000/promote_to_admin",
-    "http://127.0.0.1:5000/index"
+    "quotablemoments.com/register",
+    "quotablemoments.com/login",
+    "quotablemoments.com/logout",
+    "quotablemoments.com/home",
+    "quotablemoments.com/consult",
+    "quotablemoments.com/submit",
+    "quotablemoments.com/customize",
+    "quotablemoments.com/dashboard",
+    "quotablemoments.com/promote_to_admin",
+    "quotablemoments.com/index"
 
 ]
-# index以降のすべてのURLをドメイン取得後に掲載
 
 # Redisをセッションを保持するキャッシュとして機能させる
 # app.config['SESSION_TYPE'] = 'redis'
@@ -274,5 +273,6 @@ def promote_to_admin():
     return render_template('promote_to_admin.html', form=form)
 
 
+
 if __name__ == '__main__':
-    app.run(debug=True) 
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)),  debug=True)
